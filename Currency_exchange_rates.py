@@ -1,4 +1,4 @@
-#program to display currency rates by using web scrapping
+# program to display currency rates by using web scrapping
 import datetime
 from os import system
 
@@ -36,7 +36,11 @@ while True:
 
     conversion_data = conversion_rates.find(class_="convtop").get_text()
 
-    print(conversion_data + "\nat " + str(datetime.datetime.now()))
-
+    print("Current Exchange Rates\n" + conversion_data + "\nat " + str(datetime.datetime.now()))
+    c = conversion_data.split("=")
+    c = c[1].split(" ")
+    amount = input("how much do you want to convert")
+    converted = float(amount) * float(c[1])
+    print("after conversion amount is", converted, c[2])
     input("press any key to continue")
     system("clear")
